@@ -33,5 +33,12 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+Next.JS
+React.JS
+Node.js
+Tailwind CSS
+Typescript
 
 npm install @heroicons/react
+npm i @tailwindcss/typography
+npm i @tailwind/line-clamp
