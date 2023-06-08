@@ -41,4 +41,3 @@ Typescript
 
 npm install @heroicons/react
 npm i @tailwindcss/typography
-npm i @tailwind/line-clamp
