@@ -36,7 +36,7 @@ const Trending = (props: Props) => {
     <section className='pt-3 pb-10'>
 
     {/* Trending Articles Header */}
-        <div className='flex items-center gap-3 bg-teal-600'>
+        <div className='flex items-center gap-3 bg-teal-600 p-1'>
             <div className='bg-slate-700 py-2 px-8 text-slate-600 text-lg font-bold rounded-lg motion-safe:animate-pulse shadow-xl'>
                     Trending
             </div>
