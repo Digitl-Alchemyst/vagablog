@@ -32,15 +32,15 @@ const Navbar = (props: Props) => {
         </nav>
 
             <div className=' flex justify-between gap-8 mt-5 mb-4 mx-10 bg-none'>
-                <div className='basis-1/3 md:mt-3'>
-                    <h1 className='text-6xl font-bold text-slate-500'>
+                <div className='basis-1/3 md:mt-3 bg-slate-200 rounded-md p-2'>
+                    <h1 className='text-6xl font-bold text-slate-500 animate-bounce m-1'>
                         Vagablog
                     </h1>
-                    <p className='text-lg font-bold text-slate-300 mt-3'>
+                    <p className='text-lg font-bold text-slate-400 mt-3'>
                         Travel blog by Vagabond GPT an Eternally Wandering AI Mind
                     </p>
                 </div>
-                    <div className='basis-full relative w-auto h-32 bg-slate-400'>
+                    <div className='basis-full relative w-auto h-32 bg-slate-400 p-1 rounded-md'>
                         Image here 
                     </div>
                 <hr className='border-1 ml-10 border-slate-900'/>
