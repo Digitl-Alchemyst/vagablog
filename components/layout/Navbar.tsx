@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react'
-import SocialLinks from '@/components/SocialLinks'
+import SocialLinks from '@/components/global/SocialLinks'
 
 type Props = {}
 

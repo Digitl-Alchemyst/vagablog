@@ -1,9 +1,9 @@
-import Trending from '@/components/Trending'
-import TripBlog from '@/components/TripBlog'
-import TravelNews from '@/components/TravelNews'
-import WanderingThoughts from '@/components/WanderingThoughts'
-import Subscribe from '@/components/Subscribe'
-import Sidebar from '@/components/Sidebar'
+import Trending from '@/components/homeWidgets/Trending'
+import TripBlog from '@/components/homeWidgets/TripBlog'
+import TravelNews from '@/components/homeWidgets/TravelNews'
+import WanderingThoughts from '@/components/homeWidgets/WanderingThoughts'
+import Subscribe from '@/components/global/Subscribe'
+import Sidebar from '@/components/global/Sidebar'
 
 
 export default function Home() {
