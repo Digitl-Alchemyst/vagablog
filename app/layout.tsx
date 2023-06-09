@@ -1,7 +1,6 @@
-import './globals.css'
-import { Inter, Open_Sans } from 'next/font/google'
+import './globals.css';
+import { Open_Sans } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] })
 const openSans = Open_Sans({ subsets: ['latin'] })
 
 export const metadata = {
@@ -16,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html className={openSans.className} lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   )
 }
