@@ -15,16 +15,16 @@ export default function Home() {
         <div className="md:flex gap-10 mb-5">
           <div className="basis-3/4">
             <TripBlog />
-            {/* <TravelNews />Travel
-            <WanderingThoughts />Other Trending */}
+            <TravelNews />
+            <WanderingThoughts />
             <div className="hidden md:block">
-              <Subscribe />
+              {/* <Subscribe /> */}
             </div>
 
           </div>
         </div>
         <div className="basis-1/4">
-          <Sidebar />
+          {/* <Sidebar /> */}
         </div>
 
     </main>
