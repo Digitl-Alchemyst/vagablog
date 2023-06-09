@@ -20,7 +20,7 @@ const WanderingThoughts = (props: Props) => {
       </div>
 
       {/* Wandering Thoughts Grid */}
-        <div className="sm:grid grid-cols-2 grid-rows-3 gap-x-8 gap-y-8 my-5">
+        <div className="sm:grid grid-cols-2 grid-rows-2 gap-x-8 gap-y-8 my-5">
             <Card 
               className='bg-lime-700 mt-5 sm:mt-0 rounded-md shadow-xl'
               imageHeight='h-80'
