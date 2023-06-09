@@ -14,12 +14,9 @@ export default function Home() {
 
         <div className="md:flex gap-10 mb-5">
           <div className="basis-3/4">
-            <h1 className="text-emerald-700">
-              Welcome to Vagablog
-            </h1>
-            <TripBlog />
-            <TravelNews />
-            <WanderingThoughts />
+            <TripBlog />Tech
+            <TravelNews />Travel
+            <WanderingThoughts />Other Trending
             <div className="hidden md:block">
               <Subscribe />
             </div>
