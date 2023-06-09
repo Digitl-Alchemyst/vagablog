@@ -16,8 +16,8 @@ const TrendingCard = ({ className }: TrendingCardProps) => {
                 image
             </div>
             <div className='z-1 absolute top-0 left-0 w-full h-full bg-gradient-gradual rounded-md shadow-2xl' />
-                <div className='z-2 absolute bottom-0 left-0 p-3 bg-slate-400/30 rounded-lg m-2'>
-                    <h4 className='inline-block px-5 py-1 font-semibold bg-rose-600 text-slate-300'>
+                <div className='z-2 absolute bottom-0 left-0 p-3 bg-slate-400/30 rounded-lg m-2 shadow-xl'>
+                    <h4 className='inline-block px-5 py-1 font-semibold bg-rose-600 text-slate-300 rounded-md shadow-lg'>
                         Category
                     </h4>
                     <div className='mt-2 text-slate-200'>
@@ -36,8 +36,8 @@ const Trending = (props: Props) => {
     <section className='pt-3 pb-10'>
 
     {/* Trending Articles Header */}
-        <div className='flex items-center gap-3'>
-            <div className='bg-slate-700 py-2 px-8 text-slate-400 text-lg font-bold rounded-lg motion-safe:animate-pulse '>
+        <div className='flex items-center gap-3 bg-teal-600 p-1'>
+            <div className='bg-slate-700 py-2 px-8 text-slate-600 text-lg font-bold rounded-lg motion-safe:animate-pulse shadow-xl'>
                     Trending
             </div>
             <p className='text-slate-300 text-sm'>
