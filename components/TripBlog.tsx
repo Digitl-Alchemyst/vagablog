@@ -1,4 +1,6 @@
 import React from 'react'
+import Card from '@/components/Card'
+
 
 type Props = {}
 
@@ -19,13 +21,28 @@ const TripBlog = (props: Props) => {
       </div>
 
       {/* Trip Blog Grid */}
-        <div className="sm:grid grid-cols-2 grid-rows-3 gap-x-8 gap-y-8 my-5 sm:h-[400px]">
-            <div className='col-span-1 row-span-3 bg-lime-700'> test </div>
-            <div className='col-span-1 row-span-1 bg-purple-700'> test </div>
-            <div className='col-span-1 row-span-1 bg-teal-700'> test </div>
-            <div className='col-span-1 row-span-1 bg-amber-600'>  test </div>
-            {/* <div className='bg-rose-600 col-span-1 row-span-1 ' />
-            <div className='bg-sky-600 col-span-1 row-span-1 ' />                    */}
+        <div className="sm:grid grid-cols-2 grid-rows-3 gap-x-8 gap-y-8 my-5">
+            <Card 
+              className='col-span-1 row-span-3 bg-lime-700 rounded-md shadow-xl'
+              imageHeight='h-96'
+              isLargeCard={true}
+            />
+            <Card 
+              className=' col-span-1 row-span-1 bg-amber-600 rounded-md shadow-xl' 
+              imageHeight='h-48'
+              isSmallCard
+            />
+            <Card 
+              className=' col-span-1 row-span-1 bg-rose-600 rounded-md shadow-xl' 
+              imageHeight='h-48'
+              isSmallCard
+            />
+            <Card 
+              className=' col-span-1 row-span-1 bg-sky-600 rounded-md shadow-xl' 
+              imageHeight='h-48'
+              isSmallCard
+            />
+
         </div>
 
     </section>

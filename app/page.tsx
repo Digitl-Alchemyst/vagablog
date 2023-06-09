@@ -15,8 +15,8 @@ export default function Home() {
         <div className="md:flex gap-10 mb-5">
           <div className="basis-3/4">
             <TripBlog />
-            <TravelNews />Travel
-            <WanderingThoughts />Other Trending
+            {/* <TravelNews />Travel
+            <WanderingThoughts />Other Trending */}
             <div className="hidden md:block">
               <Subscribe />
             </div>
