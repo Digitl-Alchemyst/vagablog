@@ -1,6 +1,28 @@
 import React from 'react'
+import Link from 'next/link'
 
-type Props = {}
+type TrendingCardProps = {
+    className?: string;
+}
+
+const TrendingCard = ({ className }) => {
+    return (
+        <Link
+            className={`${className}: sm:mt-0 sm:h-auto relative mt-7 block w-full h-96 hover:opacity-75 transition ease-in-out duration-150 `}
+            // href={`${process.env.NEXT_PUBLIC_URL}/post/${post?.id}`}
+            href='/'
+        >
+            <div className='z-0 relative w-full h-full bg-amber-500'>
+                image
+            </div>
+            <div className=''>
+                <h3 className='text-slate-300 text-sm font-bold'>Title</h3>
+            </div>
+        </Link>
+    )
+}
+
+type Props = {};
 
 const Trending = (props: Props) => {
   return (
@@ -23,7 +45,7 @@ const Trending = (props: Props) => {
             <div className='bg-pink-700 col-span-1 row-span-1'></div>
             <div className='bg-orange-700 col-span-1 row-span-1'></div>                   
         </div>
-        
+
     </section>
   )
 }
