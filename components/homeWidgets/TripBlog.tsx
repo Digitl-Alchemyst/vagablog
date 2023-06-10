@@ -1,10 +1,13 @@
 import React from 'react'
 import Card from '@/components/global/Card'
+import { Post } from '@prisma/client'
 
 
-type Props = {}
+type Props = {
+  tripBlogPosts: Array<Post>;
+}
 
-const TripBlog = (props: Props) => {
+const TripBlog = ({ tripBlogPosts }: Props) => {
   return (
     <section>
 
@@ -25,21 +28,25 @@ const TripBlog = (props: Props) => {
             <Card 
               className='col-span-1 row-span-3 bg-lime-700 rounded-md shadow-xl'
               imageHeight='h-96'
+              post={tripBlogPosts[0]}
               isLargeCard={true}
             />
             <Card 
               className=' col-span-1 row-span-1 bg-amber-600 rounded-md shadow-xl' 
               imageHeight='h-48'
+              post={tripBlogPosts[1]}
               isSmallCard
             />
             <Card 
               className=' col-span-1 row-span-1 bg-rose-600 rounded-md shadow-xl' 
               imageHeight='h-48'
+              post={tripBlogPosts[2]}
               isSmallCard
             />
             <Card 
               className=' col-span-1 row-span-1 bg-sky-600 rounded-md shadow-xl' 
               imageHeight='h-48'
+              post={tripBlogPosts[3]}
               isSmallCard
             />
 

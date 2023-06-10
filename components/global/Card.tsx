@@ -1,9 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
+import { Post } from '@prisma/client'
 
 
 type Props = {
     className?: string;
+    post: Post;
     imageHeight?: string;
     isSmallCard?: boolean;
     isLargeCard?: boolean;
@@ -12,41 +14,46 @@ type Props = {
 const Card = ({
     className,
     imageHeight,
+    post,
     isSmallCard = false,
     isLargeCard = false,
 }: Props) => {
+    const { id, title, author, createdAt, image, snippet } = post || {};
+    const date = new Date(createdAt);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' } as any;
+    const formattedDate = date.toLocaleDateString('en-US', options);
 
   return (
 
     <div className={className}>
         
         <Link className='basis-full hover:opacity-70'
-            href='/'
+            href={`${process.env.NEXT_PUBLIC_URL}/post/${post?.id}`}
         >
         <div className={`relative w-auto mb-3 rounded-md p-1 ${imageHeight}`}>image</div>
         </Link>
         <div className='basis-full'>
             
-            <Link href='/'>
+            <Link href={`${process.env.NEXT_PUBLIC_URL}/post/${post?.id}`}>
                 <h4 className={`font-bold hover:text-lime-300
                         ${isSmallCard ? 'text-base' : 'text-lg'}
                         ${isSmallCard ? 'line-clamp-2' : ''}
                     `}
                 >
-                    Title
+                    {title}
                 </h4>
             </Link>
 
             <div className={`${isSmallCard ? 'my-2' : 'flex my-3'} gap-3 p-1 inline-block bg-rose-400`}>
-                <h5 className='text-sm font-semibold text-slate-300'>Author</h5>
-                <h6 className='text-sm  text-slate-200'>Date</h6>
+                <h5 className='text-sm font-semibold text-slate-300'>{author}</h5>
+                <h6 className='text-sm  text-slate-200'>{formattedDate}</h6>
             </div>
 
             <p className={`text-slate-200 p-1 bg-fuchsia-800 rounded-md ${
                     isLargeCard ? 'line-clamp-5' : 'line-clamp-3'
                 }`}
             >
-                Snippet of the article. Lorem ipsum dolor sit amet consectetur adipisicing elit, Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit lorem ipsum dolor sit amet consectetur adipisicing elit.
+                {snippet}
             </p>
 
         </div>    

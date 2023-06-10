@@ -1,9 +1,12 @@
 import React from 'react'
 import Card from '../global/Card'
+import { Post } from '@prisma/client'
 
-type Props = {}
+type Props = {
+  wanderingThoughtsPosts: Array<Post>;
+}
 
-const WanderingThoughts = (props: Props) => {
+const WanderingThoughts = ({ wanderingThoughtsPosts }: Props) => {
   return (
     <section>
       
@@ -24,18 +27,22 @@ const WanderingThoughts = (props: Props) => {
             <Card 
               className='bg-lime-700 mt-5 sm:mt-0 rounded-md shadow-xl'
               imageHeight='h-80'
+              post={wanderingThoughtsPosts[0]}
             />
             <Card 
               className='bg-teal-700 mt-5 sm:mt-0 rounded-md shadow-xl'
               imageHeight='h-80'
+              post={wanderingThoughtsPosts[1]}
             />
             <Card 
               className='bg-indigo-700 mt-5 sm:mt-0 rounded-md shadow-xl'
               imageHeight='h-80'
+              post={wanderingThoughtsPosts[2]}
             />
             <Card 
               className='bg-emerald-600 mt-5 sm:mt-0 rounded-md shadow-xl'
               imageHeight='h-80'
+              post={wanderingThoughtsPosts[3]}
             />
             
 
