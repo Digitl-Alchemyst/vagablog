@@ -7,11 +7,23 @@ import Sidebar from '@/components/global/Sidebar'
 import { prisma } from '@/app/api/client'
 import { Post } from '@prisma/client'
 
+
 export const revalidate = 3600; // does this actually work?
 
 const getPosts = async () => {
   const posts = await prisma.post.findMany();
-  return posts;
+
+  const formattedPosts = await Promise.all(
+    posts.map(async (post: Post) => {
+      const imageModule = require(`../public${post.image}`);
+      return {
+        ...post,
+        image: imageModule.default,
+      };
+    })
+  );
+
+  return formattedPosts;
 };
 
 export default async function Home() {

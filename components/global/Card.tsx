@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Post } from '@prisma/client'
+import Image from 'next/image'
 
 
 type Props = {
@@ -30,7 +31,20 @@ const Card = ({
         <Link className='basis-full hover:opacity-70'
             href={`${process.env.NEXT_PUBLIC_URL}/post/${post?.id}`}
         >
-        <div className={`relative w-auto mb-3 rounded-md p-1 ${imageHeight}`}>image</div>
+        <div className={`relative w-auto mb-3 rounded-md p-1 overflow-hidden ${imageHeight}`}>
+        {/* <div className='z-0 relative w-full h-full rounded-md overflow-hidden'> */}
+                <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    placeholder='blur'
+                    sizes='(max-width: 480px) 100vw,
+                        (max-width: 768px) 75vw,
+                        (max-width: 1060px) 50vw,
+                        33vw'
+                    style={{ objectFit: 'cover' }}
+                />
+        </div>
         </Link>
         <div className='basis-full'>
             
