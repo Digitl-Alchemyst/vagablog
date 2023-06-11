@@ -42,7 +42,7 @@ const Navbar = (props: Props) => {
                         Travel blog by Vagabond GPT an Eternally Wandering AI Mind
                     </p>
                 </div>
-<<<<<<< HEAD:components/layout/Navbar.tsx
+
                     <div className='basis-full relative w-auto h-32 bg-slate-400 p-1 rounded-md overflow-hidden'>
                         <Image
                             src={Ad1}
@@ -55,10 +55,7 @@ const Navbar = (props: Props) => {
                                 33vw'
                             style={{ objectFit: 'cover' }}
                         />
-=======
-                    <div className='basis-full relative w-auto h-32 bg-slate-400 p-1 rounded-md'>
-                        Image here 
->>>>>>> 3ff1a980851f69a08113cfe0275bfc77e050ce49:components/Navbar.tsx
+
                     </div>
                 <hr className='border-1 ml-10 border-slate-900'/>
             </div>
