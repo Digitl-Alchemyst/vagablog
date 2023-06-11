@@ -1,10 +1,14 @@
 'use client'
 
 import { FormattedPost } from '@/app/types';
-import React, { use, useState } from 'react'
+import React, { useState } from 'react';
 import { PencilSquareIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import SocialLinks from '@/components/global/SocialLinks';
+import { Editor, EditorContent, useEditor } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import MenuBar from '@/components/Editor/menuBar';
+
 
 type Props = {
     post: FormattedPost;
@@ -19,7 +23,25 @@ const Content = ({ post }: Props) => {
     const [content, setContent] = useState<string>(post.content);
     const [contentError, setContentError] = useState<string>('');
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {}
+    const handleIsEditable = (bool: boolean) => {
+        setIsEditable(bool);
+        editor?.setEditable(bool);
+    }
+
+    const editor = useEditor({
+          extensions: [
+            StarterKit,
+          ],
+          content: '<p>Hello World!</p>',
+        })
+    
+
+    const handleSubmit = (
+        e: React.FormEvent<HTMLFormElement>
+    ) => {
+        e.preventDefault();
+        console.log('submit');
+    }
 
   return (
     <div className='prose w-full max-w-full mb-10'>
@@ -33,12 +55,12 @@ const Content = ({ post }: Props) => {
             <div className='mt-4'>
                 {isEditable ? (
                     <div className='flex justify-between gap-5'>
-                        <button onClick={() => console.log('cancel edit')}>
+                        <button onClick={() => handleIsEditable(!isEditable)}>
                             <XMarkIcon className='h-6 w-6 text-amber-600' />
                         </button>
                     </div>
                 ) : (
-                    <button onClick={() => console.log('make edit')}>
+                    <button onClick={() => handleIsEditable(!isEditable)}>
                         <PencilSquareIcon className='h-6 w-6 text-amber-600' />
                     </button>
                 )}
@@ -48,51 +70,65 @@ const Content = ({ post }: Props) => {
         <form onSubmit={handleSubmit}>
 
         
-        {/* Title Header */}
-        <>
-        {isEditable ? (
-        <div>
-            <textarea
-                className='w-full bg-slate-800 text-slate-300 rounded-md shadow-md mb-5 p-3 border-2'
-                placeholder='Title'
-                onChange={(e) => console.log('title', e.target.value)}
-                value={title}
-            />
-        </div>
-        ) : (
-        <h2 className='text-4xl font-bold mb-5 mt-3'>{title}</h2>
-        )}
-        <div className='flex gap-3 items-center'>
-            <h4 className='text-slate-500 text-sm font-semibold pb-3'>{post.author}</h4>
-            <h5 className='text-slate-500 text-sm'>{post.createdAt}</h5>
-        </div>
-        </>
-        
-        {/* Image  */}
-        <div className='relative w-auto mt-2 mb-15 h-96'>
-            <Image 
-                src={post.image} 
-                alt={post.title} 
-                fill
-                sizes='(max-width: 480px) 100vw, (max-width: 768px) 85vw, (max-width: 1060px) 75vw, 1536px'
-                style={{ objectFit: 'cover' }}
-                className='rounded-md shadow-md' 
-            />
-        </div>
-        {/* Content  */}
-        {post.content}
-        
-        {/* Submit Edit Button  */}
-        {isEditable && (
-            <div className='flex justify-end'>
-                <button 
-                    className='bg-lime-800 hover:bg-slate-400/40 text-slate-300 font-semibold py-2 px-5 mt-5 rounded-md shadow-md'
-                    type='submit'
-                >
-                    Submit Edit
-                </button>
+            {/* Title Header */}
+            <>
+            {isEditable ? (
+            <div>
+                <textarea
+                    className='w-full bg-slate-800 text-slate-300 rounded-md shadow-md mb-5 p-3 border-2'
+                    placeholder='Title'
+                    onChange={(e) => console.log('title', e.target.value)}
+                    value={title}
+                />
             </div>
-        )}
+            ) : (
+            <h2 className='text-4xl font-bold mb-5 mt-3'>{title}</h2>
+            )}
+            <div className='flex gap-3 items-center'>
+                <h4 className='text-slate-500 text-sm font-semibold pb-3'>{post.author}</h4>
+                <h5 className='text-slate-500 text-sm'>{post.createdAt}</h5>
+            </div>
+            </>
+            
+            {/* Image  */}
+            <div className='relative w-auto mt-2 mb-15 h-96'>
+                <Image 
+                    src={post.image} 
+                    alt={post.title} 
+                    fill
+                    sizes='(max-width: 480px) 100vw, (max-width: 768px) 85vw, (max-width: 1060px) 75vw, 1536px'
+                    style={{ objectFit: 'cover' }}
+                    className='rounded-md shadow-md' 
+                />
+            </div>
+
+            {/* Article Editor  */}
+            <div className={
+                isEditable 
+                ? 'border-2 rounded-sm bg-slate-100 p-3' 
+                : 'w-full max-w-full'
+                }
+            >
+                {isEditable && (
+                    <>
+                        <MenuBar editor={editor} />
+                        <hr className='border-1 mt-2 mb-5' />
+                    </>
+                )}
+                <EditorContent editor={editor} />
+            </div>
+
+            {/* Submit Edit Button  */}
+            {isEditable && (
+                <div className='flex justify-end'>
+                    <button 
+                        className='bg-lime-800 hover:bg-slate-400/40 text-slate-300 font-semibold py-2 px-5 mt-5 rounded-md shadow-md'
+                        type='submit'
+                    >
+                        Submit Edit
+                    </button>
+                </div>
+            )}
         </form>
         
         {/* Social Link  */}
@@ -100,7 +136,7 @@ const Content = ({ post }: Props) => {
             <SocialLinks isDark />
         </div>
     </div>
-  );
-};
+  )
+}
 
-export default Content;
+export default Content

@@ -1,5 +1,5 @@
 import React from 'react'
-// import Content from '@/components/post/Content'
+// import Content from '@/app/post/[id]/Content'
 import Sidebar from '@/components/global/Sidebar'
 import Content from './Content'
 import { prisma } from '@/app/api/client';
@@ -34,17 +34,20 @@ type Props = {
 const Post = async ({ params }: Props) => {
   const { id } = params;
   const post: FormattedPost | null = await getPost(id);
-    console.log("🚀 ~ file: page.tsx:35 ~ Post ~ post:", post)
+    if (!post) {
+        return <div>Post with id {id} not found</div>;
+    }
+        console.log("🚀 ~ file: page.tsx:35 ~ Post ~ post:", post)
 
     return (
       <main className="px-10 leading-7">
 
         <div className="md:flex gap-10 mb-5">
           <div className="basis-3/4">
-              <Content  post={post} />
+            <Content post={post} />
           </div>        
           <div className="basis-1/4">
-              <Sidebar />
+            <Sidebar />
           </div>
         </div>
 
