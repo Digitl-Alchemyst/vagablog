@@ -47,3 +47,4 @@ irm get.scoop.sh | iex
 scoop bucket add pscale https://github.com/planetscale/scoop-bucket.git
 scoop install pscale mysql
 npx prisma init
+.
