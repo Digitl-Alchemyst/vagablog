@@ -1,6 +1,7 @@
 import React from 'react'
 // import Content from '@/components/post/Content'
 import Sidebar from '@/components/global/Sidebar'
+import Content from './Content'
 import { prisma } from '@/app/api/client';
 import { Post as PostType } from '@prisma/client';
 import { FormattedPost } from '@/app/types';
@@ -40,7 +41,7 @@ const Post = async ({ params }: Props) => {
 
         <div className="md:flex gap-10 mb-5">
           <div className="basis-3/4">
-              {/* <Content /> */}
+              <Content  post={post} />
           </div>        
           <div className="basis-1/4">
               <Sidebar />
