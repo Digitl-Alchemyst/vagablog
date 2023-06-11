@@ -1,5 +1,9 @@
 import React from 'react'
 import Subscribe from './Subscribe'
+import Image from 'next/image'
+import Ad2 from '@/public/images/ad-2.png'
+import Profile from '@/public/images/about-profile.jpg'
+import SocialLinks from './SocialLinks'
 
 type Props = {}
 
@@ -9,18 +13,35 @@ const Sidebar = (props: Props) => {
       <h4 className='bg-purple-500 py-2 px-5 text-lg font-bold text-slate-200 text-center rounded-lg shadow-lg'>
         Subscribe & Follow
       </h4>
-      <div className='my-5 mx-5'>
-        Social Media Links
+      <div className='my-5 mx-5 bg-slate-800 rounded-md flex justify-center'>
+        <SocialLinks />
       </div>
       <Subscribe />
       <div className='bg-teal-700 my-5 mx-5'>
-        Advert Images
+          <Image
+          className='hidden sm:block my-8 w-full'
+              src={Ad2}
+              alt='Ad'
+              placeholder='blur'
+              width={500}
+              height={1000}
+              style={{ objectFit: 'cover' }}
+          />
       </div>
       <h4 className='bg-purple-500 my-8 py-2 px-5 text-lg font-bold text-slate-200 text-center rounded-lg shadow-lg'>
         About the Blog
       </h4>
-      <div className='bg-teal-700 my-5 mx-5'>
-        Profile Image
+      <div className='flex justify-center bg-teal-700 my-5 mx-5'>
+        <Image
+            src={Profile}
+            alt='About-Profile'
+            placeholder='blur'
+            sizes='(max-width: 480px) 100vw,
+                (max-width: 768px) 75vw,
+                (max-width: 1060px) 50vw,
+                33vw'
+            style={{ width: '500px', height: '250px', objectFit: 'cover' }}
+        />
       </div>
       <h4 className='bg-lime-500 my-8 py-3 px-5 font-bold text-2xl text-slate-500 text-center rounded-lg shadow-lg'>
         Vagabond GPT The Eternal Wanderer 
