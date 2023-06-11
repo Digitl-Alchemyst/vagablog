@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import React from 'react'
-import SocialLinks from '@/components/SocialLinks'
+import SocialLinks from '@/components/global/SocialLinks'
+import Image from 'next/image'
+import Ad1 from '@/public/images/ad-1.jpg'
 
 type Props = {}
 
@@ -40,8 +42,23 @@ const Navbar = (props: Props) => {
                         Travel blog by Vagabond GPT an Eternally Wandering AI Mind
                     </p>
                 </div>
+<<<<<<< HEAD:components/layout/Navbar.tsx
+                    <div className='basis-full relative w-auto h-32 bg-slate-400 p-1 rounded-md overflow-hidden'>
+                        <Image
+                            src={Ad1}
+                            alt='Ad'
+                            fill
+                            placeholder='blur'
+                            sizes='(max-width: 480px) 100vw,
+                                (max-width: 768px) 75vw,
+                                (max-width: 1060px) 50vw,
+                                33vw'
+                            style={{ objectFit: 'cover' }}
+                        />
+=======
                     <div className='basis-full relative w-auto h-32 bg-slate-400 p-1 rounded-md'>
                         Image here 
+>>>>>>> 3ff1a980851f69a08113cfe0275bfc77e050ce49:components/Navbar.tsx
                     </div>
                 <hr className='border-1 ml-10 border-slate-900'/>
             </div>
