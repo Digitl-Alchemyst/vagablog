@@ -26,7 +26,7 @@ const TripBlog = ({ tripBlogPosts }: Props) => {
       {/* Trip Blog Grid */}
         <div className="sm:grid grid-cols-2 grid-rows-3 gap-x-8 gap-y-8 my-5">
             <Card 
-              className='col-span-1 row-span-3 bg-lime-700 rounded-md shadow-xl'
+              className='col-span-1 row-span-2 bg-lime-700 rounded-md shadow-xl'
               imageHeight='h-96'
               post={tripBlogPosts[0]}
               isLargeCard={true}
@@ -47,6 +47,12 @@ const TripBlog = ({ tripBlogPosts }: Props) => {
               className=' col-span-1 row-span-1 bg-sky-600 rounded-md shadow-xl' 
               imageHeight='h-48'
               post={tripBlogPosts[3]}
+              isSmallCard
+            />
+            <Card 
+              className=' col-span-1 row-span-1 bg-sky-600 rounded-md shadow-xl' 
+              imageHeight='h-48'
+              post={tripBlogPosts[4]}
               isSmallCard
             />
 
