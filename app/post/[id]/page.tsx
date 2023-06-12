@@ -37,7 +37,7 @@ const Post = async ({ params }: Props) => {
     if (!post) {
         return <div>Post with id {id} not found</div>;
     }
-        console.log("🚀 ~ file: page.tsx:35 ~ Post ~ post:", post)
+        // console.log("🚀 ~ file: page.tsx:35 ~ Post ~ post:", post)
 
     return (
       <main className="px-10 leading-7">

@@ -2,70 +2,91 @@
 
 import { FormattedPost } from '@/app/types';
 import React, { useState } from 'react';
-import { PencilSquareIcon, XMarkIcon } from '@heroicons/react/24/solid';
+
 import Image from 'next/image';
 import SocialLinks from '@/components/global/SocialLinks';
 import { Editor, EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import MenuBar from '@/components/Editor/menuBar';
+import CategoryEdit from '@/components/Editor/categoryEdit';
+import ArticleEditor from '@/components/Editor/ArticleEditor';
 
 
 type Props = {
     post: FormattedPost;
-}
+};
 
 const Content = ({ post }: Props) => {
     const [isEditable, setIsEditable] = useState<boolean>(false);
 
     const [title, setTitle] = useState<string>(post.title);
-    const [titleError, setTitleError] = useState<string>('');
+    const [titleError, setTitleError] = useState<string>("");
+    const [tempTitle, setTempTitle] = useState<string>(title);
 
     const [content, setContent] = useState<string>(post.content);
-    const [contentError, setContentError] = useState<string>('');
+    const [contentError, setContentError] = useState<string>("");
+    const [tempContent, setTempContent] = useState<string>(content);
+
+    const date = new Date(post?.createdAt);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' } as any;
+    const formattedDate = date.toLocaleDateString('en-US', options);
+
+    
 
     const handleIsEditable = (bool: boolean) => {
         setIsEditable(bool);
         editor?.setEditable(bool);
-    }
+      };
+
+    const handleOnChangeTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        if (title) setTitleError("");
+        setTitle(e.target.value);
+      };
+
+    const handleOnChangeContent = ({ editor }: any) => {
+        if (!(editor as Editor).isEmpty) setContentError('Content cannot be empty');
+        setContent((editor as Editor).getHTML());
+    };
 
     const editor = useEditor({
-          extensions: [
-            StarterKit,
-          ],
-          content: '<p>Hello World!</p>',
-        })
+        extensions: [StarterKit],
+        onUpdate: handleOnChangeContent,
+        editorProps: {
+            attributes: {
+                class:
+                    'prose prose-sm xl:prose-2xl leading-8 focus:outline-none w-full max-w-full'
+            },
+        },
+        content: content,
+        editable: isEditable,          
+
+    });
     
 
-    const handleSubmit = (
-        e: React.FormEvent<HTMLFormElement>
-    ) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('submit');
-    }
-
+    };
+    
   return (
     <div className='prose w-full max-w-full mb-10'>
 
+
+
         {/* Breadcrumbs  */}
-        <h5 className='text-slate-300 text-2xl font-bold mb-5 bg-lime-800 p-2 rounded-md shadow-md'>{`Home > ${post.category} > ${post.title}`}</h5>
+        <h5 className='text-slate-300 text-2xl font-bold mb-5 bg-lime-800 p-2 rounded-md shadow-md '>{`Home > ${post.category} > ${post.title}`}</h5>
         
         {/* Category & Edit Button */}
-        <div className='flex justify-between items-center mb-5'>
-            <h4 className='bg-violet-600 py-2 px-5 text-slate-800 text-md font-bold rounded-md shadow-lg'>{post.category}</h4>
-            <div className='mt-4'>
-                {isEditable ? (
-                    <div className='flex justify-between gap-5'>
-                        <button onClick={() => handleIsEditable(!isEditable)}>
-                            <XMarkIcon className='h-6 w-6 text-amber-600' />
-                        </button>
-                    </div>
-                ) : (
-                    <button onClick={() => handleIsEditable(!isEditable)}>
-                        <PencilSquareIcon className='h-6 w-6 text-amber-600' />
-                    </button>
-                )}
-            </div>
-        </div>
+        <CategoryEdit 
+            isEditable={isEditable}
+            handleIsEditable={handleIsEditable}
+            title={title}
+            setTitle={setTitle}
+            tempTitle={tempTitle}
+            setTempTitle={setTempTitle}
+            tempContent={tempContent}
+            setTempContent={setTempContent}
+            editor={editor}
+            post={post}
+        />
 
         <form onSubmit={handleSubmit}>
 
@@ -77,7 +98,7 @@ const Content = ({ post }: Props) => {
                 <textarea
                     className='w-full bg-slate-800 text-slate-300 rounded-md shadow-md mb-5 p-3 border-2'
                     placeholder='Title'
-                    onChange={(e) => console.log('title', e.target.value)}
+                    onChange={handleOnChangeTitle}
                     value={title}
                 />
             </div>
@@ -86,12 +107,12 @@ const Content = ({ post }: Props) => {
             )}
             <div className='flex gap-3 items-center'>
                 <h4 className='text-slate-500 text-sm font-semibold pb-3'>{post.author}</h4>
-                <h5 className='text-slate-500 text-sm'>{post.createdAt}</h5>
+                <h5 className='text-slate-500 text-sm'>{formattedDate}</h5>
             </div>
             </>
             
             {/* Image  */}
-            <div className='relative w-auto mt-2 mb-15 h-96'>
+            <div className='relative w-auto mt-2 mb-10 h-96'>
                 <Image 
                     src={post.image} 
                     alt={post.title} 
@@ -103,27 +124,20 @@ const Content = ({ post }: Props) => {
             </div>
 
             {/* Article Editor  */}
-            <div className={
-                isEditable 
-                ? 'border-2 rounded-sm bg-slate-100 p-3' 
-                : 'w-full max-w-full'
-                }
-            >
-                {isEditable && (
-                    <>
-                        <MenuBar editor={editor} />
-                        <hr className='border-1 mt-2 mb-5' />
-                    </>
-                )}
-                <EditorContent editor={editor} />
-            </div>
+            <ArticleEditor 
+                contentError={contentError}
+                editor={editor}
+                isEditable={isEditable}
+                setContent={setContent}
+                title={title}
+            />
 
             {/* Submit Edit Button  */}
             {isEditable && (
                 <div className='flex justify-end'>
                     <button 
-                        className='bg-lime-800 hover:bg-slate-400/40 text-slate-300 font-semibold py-2 px-5 mt-5 rounded-md shadow-md'
                         type='submit'
+                        className='bg-lime-800 hover:bg-slate-400/40 text-slate-300 font-semibold py-2 px-5 mt-5 rounded-md shadow-md'                        
                     >
                         Submit Edit
                     </button>
@@ -136,7 +150,8 @@ const Content = ({ post }: Props) => {
             <SocialLinks isDark />
         </div>
     </div>
-  )
-}
+  );
+};
+
 
 export default Content

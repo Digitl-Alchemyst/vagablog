@@ -13,8 +13,10 @@ const MenuBar = ({ editor }: Props) => {
     }
   
     return (
-      <>
+      <div className='flex items-center justify-center'>
+        <div className='items-center gap-5'>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleBold().run()}
           disabled={
             !editor.can()
@@ -23,11 +25,12 @@ const MenuBar = ({ editor }: Props) => {
               .toggleBold()
               .run()
           }
-          className={editor.isActive('bold') ? 'is-active' : ''}
+          className={editor.isActive('bold') ? 'bg-slate-600 text-slate-300 p-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-          bold
+          <b>B</b>
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={
             !editor.can()
@@ -36,11 +39,12 @@ const MenuBar = ({ editor }: Props) => {
               .toggleItalic()
               .run()
           }
-          className={editor.isActive('italic') ? 'is-active' : ''}
+          className={editor.isActive('italic') ? 'bg-slate-600 text-slate-300 p-1 px-2 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 px-2 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-          italic
+          <i>I</i>
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleStrike().run()}
           disabled={
             !editor.can()
@@ -49,11 +53,12 @@ const MenuBar = ({ editor }: Props) => {
               .toggleStrike()
               .run()
           }
-          className={editor.isActive('strike') ? 'is-active' : ''}
+          className={editor.isActive('strike') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-          strike
+         <strike>strike</strike>
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleCode().run()}
           disabled={
             !editor.can()
@@ -62,90 +67,111 @@ const MenuBar = ({ editor }: Props) => {
               .toggleCode()
               .run()
           }
-          className={editor.isActive('code') ? 'is-active' : ''}
+          className={editor.isActive('code') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
           code
         </button>
-        <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
+        <button
+        type='button' onClick={() => editor.chain().focus().unsetAllMarks().run()}
+        className={editor.isActive('blockquote') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}>
           clear marks
         </button>
-        <button onClick={() => editor.chain().focus().clearNodes().run()}>
+        <button
+        type='button' onClick={() => editor.chain().focus().clearNodes().run()}
+        className={editor.isActive('blockquote') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}>
           clear nodes
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().setParagraph().run()}
-          className={editor.isActive('paragraph') ? 'is-active' : ''}
+          className={editor.isActive('paragraph') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-          paragraph
+          ¶aragraph
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-          className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
+          className={editor.isActive('heading', { level: 1 }) ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-          h1
+          H<span className="text-xs">1</span>
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-          className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
+          className={editor.isActive('heading', { level: 2 }) ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-          h2
+          H<span className="text-xs">2</span>
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-          className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
+          className={editor.isActive('heading', { level: 3 }) ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-          h3
+          H<span className="text-xs">3</span>
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-          className={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
+          className={editor.isActive('heading', { level: 4 }) ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-          h4
+          H<span className="text-xs">4</span>
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-          className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
+          className={editor.isActive('heading', { level: 5 }) ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-          h5
+          H<span className="text-xs">5</span>
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-          className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
+          className={editor.isActive('heading', { level: 6 }) ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-          h6
+          H<span className="text-xs">6</span>
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={editor.isActive('bulletList') ? 'is-active' : ''}
+          className={editor.isActive('bulletList') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
           bullet list
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          className={editor.isActive('orderedList') ? 'is-active' : ''}
+          className={editor.isActive('orderedList') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
           ordered list
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-          className={editor.isActive('codeBlock') ? 'is-active' : ''}
+          className={editor.isActive('codeBlock') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
           code block
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          className={editor.isActive('blockquote') ? 'is-active' : ''}
+          className={editor.isActive('blockquote') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
           blockquote
         </button>
-        <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
+        <button
+        type='button' onClick={() => editor.chain().focus().setHorizontalRule().run()}
+          className={editor.isActive('blockquote') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}>
           horizontal rule
         </button>
-        <button onClick={() => editor.chain().focus().setHardBreak().run()}>
+        <button
+        type='button' onClick={() => editor.chain().focus().setHardBreak().run()}
+          className={editor.isActive('blockquote') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}>
           hard break
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().undo().run()}
+          className={editor.isActive('blockquote') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
           disabled={
             !editor.can()
               .chain()
@@ -157,7 +183,9 @@ const MenuBar = ({ editor }: Props) => {
           undo
         </button>
         <button
+        type='button'
           onClick={() => editor.chain().focus().redo().run()}
+          className={editor.isActive('blockquote') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
           disabled={
             !editor.can()
               .chain()
@@ -168,8 +196,9 @@ const MenuBar = ({ editor }: Props) => {
         >
           redo
         </button>
-
-      </>
+          </div>
+          </div>
+      
     )
   }
 
