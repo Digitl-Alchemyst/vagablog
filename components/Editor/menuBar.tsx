@@ -55,7 +55,8 @@ const MenuBar = ({ editor }: Props) => {
           }
           className={editor.isActive('strike') ? 'bg-slate-600 text-slate-300 p-1 shadow-lg border-2 border-slate-500 border-rounded m-1 rounded-md' : 'p-1 shadow-lg border-2 border-slate-500 border-rounded m-1'}
         >
-         <strike>strike</strike>
+         {/* <strike>strike</strike> */}
+         strike
         </button>
         <button
         type='button'
