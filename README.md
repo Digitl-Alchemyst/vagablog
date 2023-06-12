@@ -47,3 +47,9 @@ irm get.scoop.sh | iex
 scoop bucket add pscale https://github.com/planetscale/scoop-bucket.git
 scoop install pscale mysql
 npx prisma init
+
+
+This project Needs
+    A way to add new post.
+    Hide the Add & Edit Post features behind a login session
+    Link images to editor and database
