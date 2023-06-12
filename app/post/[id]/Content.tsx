@@ -8,7 +8,7 @@ import SocialLinks from '@/components/global/SocialLinks';
 import { Editor, EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import CategoryEdit from '@/components/Editor/categoryEdit';
-import ArticleEditor from '@/components/Editor/ArticleEditor';
+import ArticleEditor from '@/components/Editor/articleEditor';
 
 
 type Props = {
@@ -42,10 +42,10 @@ const Content = ({ post }: Props) => {
         setTitle(e.target.value);
       };
 
-    const handleOnChangeContent = ({ editor }: any) => {
-        if (!(editor as Editor).isEmpty) setContentError('Content cannot be empty');
+      const handleOnChangeContent = ({ editor }: any) => {
+        if (!(editor as Editor).isEmpty) setContentError("");
         setContent((editor as Editor).getHTML());
-    };
+      };
 
     const editor = useEditor({
         extensions: [StarterKit],
@@ -64,7 +64,36 @@ const Content = ({ post }: Props) => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-    };
+
+        // Validation Checks 
+        if (title === "") setTitleError("This field is required.");
+        if (editor?.isEmpty) setContentError("This field is required.");
+        if (title === "" || editor?.isEmpty) return;
+
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_URL}/api/post/${post?.id}`,
+            {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title: title,
+                    content: content,
+                }),
+            }
+            );
+            const data = await response.json();
+
+            handleIsEditable(false);
+            setTempTitle('');
+            setTempContent('');
+
+            setTitle(data.title);
+            setContent(data.content);
+            editor?.commands.setContent(data.content);
+        };
+    
     
   return (
     <div className='prose w-full max-w-full mb-10'>
@@ -101,6 +130,7 @@ const Content = ({ post }: Props) => {
                     onChange={handleOnChangeTitle}
                     value={title}
                 />
+                {titleError && <p className='text-rose-700 mt-1'>{titleError}</p>}
             </div>
             ) : (
             <h2 className='text-4xl font-bold mb-5 mt-3'>{title}</h2>
