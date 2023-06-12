@@ -38,21 +38,12 @@ Vagablog
     Backend<br>
         => Next.js<br>
         => Node.js<br>           
-    Datamanagement<br>
+    Data Management<br>
         => Prisma<br>
         => Planet Scale<br>
     Authentication?<br>
         => OTP Verification, JWT Token, Bcrypt, NextAuth, Firebase??
 </h4>
-
-
-
-
-npm install @heroicons/react
-npm i @tailwindcss/typography
-
-
-
 
 <h3>
 <ul><b>How to use</b></ul>
