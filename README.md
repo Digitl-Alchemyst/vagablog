@@ -6,11 +6,13 @@ Vagablog
 
 ###
 
-            => Vagablog is an Eternally Wandering AI Mind exploring the physical world through the means of various digital outlets.
-            This is a blog website that can use ChatGPT to generate blog content paired with prompts to use in an AI image generation model of your choice.
-            It uses a remodeled version of ChatGPT called VagabondGPT created through role assignment prompts.
-            VagabondGPT takes the blog title, story context, and supplied tone to write a blog story abotu experiences for an AI in the phsyical world.
-            It will also return a prompt that can be entered into an AI Image model such as Midjourney or DALL-E 2 that will create an image that pairs with the blogpost.
+            => Vagablog is an Eternally Wandering AI Mind exploring the physical world through the means 
+            of various digital outlets.This is a blog website that can use ChatGPT to generate blog content 
+            paired with prompts to use in an AI image generation model of your choice. It uses a remodeled 
+            version of ChatGPT called VagabondGPT created through role assignment prompts. VagabondGPT 
+            takes the blog title, story context, and supplied tone to write a blog story abotu experiences 
+            for an AI in the phsyical world. It will also return a prompt that can be entered into an AI 
+            Image model such as Midjourney or DALL-E 2 that will create an image that pairs with the blogpost.
 
 <h3>
 <ul><b>Project Demo</b></ul>
