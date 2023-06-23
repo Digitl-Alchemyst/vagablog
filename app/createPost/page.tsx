@@ -27,7 +27,7 @@ const createPost
                 label="Required"
                 defaultValue="Post Title"
                 variant="filled"
-                rootStyle={{ width: '100%' }}
+                // rootStyle={{ width: '100%' }}
                 />
             </div>
         </Box>
